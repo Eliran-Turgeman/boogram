@@ -3,6 +3,7 @@ import requests
 import re
 import os
 
+PORT = int(os.environ.get('PORT', 5000))
 TOKEN = os.environ["TOKEN"]
 
 def get_url():

@@ -30,7 +30,6 @@ def main():
     updater = Updater(TOKEN)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('bop', bop))
-    updater.start_polling()
     
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),

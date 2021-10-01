@@ -1,7 +1,9 @@
 from telegram.ext import Updater, InlineQueryHandler, CommandHandler
 import requests
 import re
+import os
 
+TOKEN = os.environ["TOKEN"]
 
 def get_url():
     contents = requests.get('https://random.dog/woof.json').json()
@@ -24,17 +26,17 @@ def bop(update, context):
     context.bot.send_photo(chat_id=chat_id, photo=url)
 
 
-def get_token():
-    with open("token.txt") as f:
-        token = f.read().strip()
-    return token
-
-
 def main():
-    updater = Updater(get_token())
+    updater = Updater(TOKEN)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('bop', bop))
     updater.start_polling()
+    
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=TOKEN)
+    updater.bot.setWebhook('https://boogram.herokuapp.com/' + TOKEN)
+    
     updater.idle()
 
 

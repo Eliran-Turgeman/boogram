@@ -6,8 +6,8 @@ import os
 TOKEN = os.environ["TOKEN"]
 
 def get_url():
-    contents = requests.get('https://random.dog/woof.json').json()
-    url = contents['url']
+    contents = requests.get('https://dog.ceo/api/breeds/image/random').json()
+    url = contents['message']
     return url
 
 

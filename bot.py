@@ -36,7 +36,6 @@ def main():
                           port=int(PORT),
                           url_path=TOKEN)
     updater.bot.setWebhook('https://boogram.herokuapp.com/' + TOKEN)
-    
     updater.idle()
 
 
